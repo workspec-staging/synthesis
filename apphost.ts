@@ -2,16 +2,15 @@ import { createBuilder } from './.modules/aspire.js';
 
 const builder = await createBuilder();
 
-let web = builder
-  .addViteApp('web', './artifacts/web')
-  .withPnpm();
-
 if (process.env.WORKSPEC) {
-  web = web
-    .withViteConfig('./vite.workspec.config.ts')
-    .withHttpEndpoint({ port: 8080 });
+  await builder
+    .addJavaScriptApp('web', './artifacts/web', 'dev:workstation')
+    .withHttpEndpoint({ port: 8080, env: 'PORT' })
+    .withPnpm();
+} else {
+  await builder
+    .addViteApp('web', './artifacts/web')
+    .withPnpm();
 }
-
-await web;
 
 await builder.build().run();
