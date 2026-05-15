@@ -7,7 +7,9 @@ let web = builder
   .withPnpm();
 
 if (process.env.WORKSPEC) {
-  web = web.withViteConfig('./vite.workspec.config.ts');
+  web = web
+    .withViteConfig('./vite.workspec.config.ts')
+    .withHttpEndpoint({ port: 8080 });
 }
 
 await web;
