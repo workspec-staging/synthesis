@@ -5,7 +5,7 @@ export default defineConfig({
     __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
   },
   server: {
-    port: parseInt(process.env.PORT ?? '8080'),
+    port: parseInt(process.env.VITE_PORT ?? '8080'),
     strictPort: true,
     host: '0.0.0.0',
   },
