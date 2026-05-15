@@ -8,6 +8,7 @@ export default defineConfig({
     port: parseInt(process.env.VITE_PORT ?? '8080'),
     strictPort: true,
     host: '0.0.0.0',
+    allowedHosts: true,
   },
   preview: {
     port: 8080,
